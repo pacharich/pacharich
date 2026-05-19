@@ -5,7 +5,7 @@ const FEMALES = [
   { id: 'misa',  name: '美沙',   age: 32, location: '東京都',       origin: '愛媛県', height: 160, size: 'B84 / W60 / H85',         exp: 7,  shots: 4, note: '' },
   { id: 'kana',  name: '香奈',   age: 34, location: '東京',         origin: '',       height: 159, size: 'B75 / W60 / H89',         exp: 8,  shots: 5, note: '' },
   { id: 'rina',  name: 'りな',   age: 35, location: '東京',         origin: '',       height: 162, size: 'B83 / W61 / H87',         exp: 11, shots: 5, note: '' },
-  { id: 'kano',  name: 'カノ',   age: 28, location: '兵庫県神戸市', origin: '',       height: 157, size: 'B70 / W55',               exp: 3,  shots: 4, note: '遠方のため、兵庫駅から現地までの往復交通費を実費にてご負担いただきます。' },
+  { id: 'kano',  name: 'KANO',   age: 28, location: '兵庫県神戸市', origin: '',       height: 157, size: 'B70 / W55',               exp: 3,  shots: 4, note: '遠方のため、兵庫駅から現地までの往復交通費を実費にてご負担いただきます。' },
   { id: 'mio',   name: '美緒',   age: 33, location: '東京都',       origin: '石川県', height: 153, size: 'B82 / W55 / H86',         exp: 6,  shots: 5, note: '' },
   { id: 'maika', name: 'マイカ', age: 29, location: '東京都',       origin: '千葉県', height: 153, size: '服装 S（他非公開）',       exp: 3,  shots: 4, note: '' },
   { id: 'mana',  name: 'マナ',   age: 30, location: '東京都',       origin: '',       height: 162, size: '服装 M（他非公開）',       exp: 3,  shots: 5, note: '' },
