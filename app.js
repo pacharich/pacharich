@@ -88,7 +88,7 @@ function renderGrid(){
     grid.appendChild(card);
   });
   $('#gridCount').textContent = list.length;
-  $('#gridLabel').textContent = currentTab === 'female' ? '女性 ／ ' : '男性 ／ ';
+  $('#gridLabel').textContent = '';
 }
 
 // ============ Tabs ============
@@ -118,7 +118,7 @@ function closeLightbox(){
 }
 function renderLightbox(){
   const m = lbList[lbIdx];
-  const role = currentTab === 'female' ? '女性 ／ ' : '男性 ／ ';
+  const role = '';
   const numLabel = (currentTab === 'female' ? '女性' : '男性') + String(lbIdx+1).padStart(2,'0');
 
   // main slot — points to the active shot
