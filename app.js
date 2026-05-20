@@ -61,7 +61,7 @@ function renderGrid(){
       <div class="card-photo">
         ${slot}
         <span class="card-no">${numLabel}</span>
-        <span class="card-shots">${m.shots}カット</span>
+        
         <span class="card-check">✓</span>
       </div>
       <div class="card-body">
@@ -78,6 +78,10 @@ function renderGrid(){
       </div>
     `;
     card.addEventListener('click', () => openLightbox(i));
+    if (tab === 'male') {
+      const slot = card.querySelector('image-slot');
+      if (slot) slot.style.transform = 'scale(1.15)';
+    }
     grid.appendChild(card);
   });
   $('#gridCount').textContent = list.length;
