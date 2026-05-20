@@ -78,10 +78,13 @@ function renderGrid(){
       </div>
     `;
     card.addEventListener('click', () => openLightbox(i));
-    if (tab === 'male') {
-      const slot = card.querySelector('image-slot');
-      if (slot) slot.style.transform = 'scale(1.15)';
+    if (currentTab === 'male' && m.id !== 'ゆうき') {
+      setTimeout(() => {
+        const img = card.querySelector('image-slot');
+        if (img) { img.style.transform = 'scale(1.12)'; img.style.transformOrigin = 'center center'; }
+      }, 500);
     }
+
     grid.appendChild(card);
   });
   $('#gridCount').textContent = list.length;
