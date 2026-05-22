@@ -41,22 +41,32 @@
 </section>
 
 <!-- ====== Models ====== -->
-<section class="section" id="female">
+<section class="section">
   <div class="section-head" style="align-items:flex-end">
     <div>
       <div class="section-num">キャスティング候補一覧 ／ アトールテラス鴨川様 ／ 2026年5月版</div>
       <h2 class="section-title">モデル<em>候補</em></h2>
     </div>
-    <div style="display:flex;flex-direction:column;align-items:flex-end;gap:14px">
-      <div class="tabs" role="tablist">
-        <button class="tab active" data-tab="female" role="tab">女性 <span class="count">3</span></button>
-        <button class="tab" data-tab="male" role="tab">男性 <span class="count">3</span></button>
-      </div>
-      <div class="section-tail"><span id="gridLabel"></span> · <span id="gridCount">3</span> 名</div>
-    </div>
+    <div class="section-tail">全 6 名</div>
   </div>
 
-  <div id="grid" class="grid"></div>
+  <!-- 女性 -->
+  <div class="gender-block" id="female">
+    <div class="gender-head">
+      <span class="gender-badge">女性</span>
+      <span class="gender-count">3 名</span>
+    </div>
+    <div id="gridFemale" class="grid"></div>
+  </div>
+
+  <!-- 男性 -->
+  <div class="gender-block" id="male" style="margin-top:56px">
+    <div class="gender-head">
+      <span class="gender-badge">男性</span>
+      <span class="gender-count">3 名</span>
+    </div>
+    <div id="gridMale" class="grid"></div>
+  </div>
 </section>
 
 <!-- ====== Footer ====== -->

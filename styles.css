@@ -420,6 +420,30 @@ button{font-family:inherit}
 .tab.active .count{background:rgba(255,255,255,.16);color:#fff}
 .tab:not(.active):hover{color:var(--ink)}
 
+/* ========== Gender block ========== */
+.gender-block{ }
+.gender-head{
+  display:flex;
+  align-items:center;
+  gap:14px;
+  margin-bottom:24px;
+  padding-bottom:14px;
+  border-bottom:2px solid var(--line);
+}
+.gender-badge{
+  font-family:var(--serif);
+  font-size:22px;
+  font-weight:600;
+  letter-spacing:.02em;
+  color:var(--ink);
+}
+.gender-count{
+  font-family:var(--mono);
+  font-size:11px;
+  color:var(--muted);
+  letter-spacing:.12em;
+}
+
 /* ========== Model grid ========== */
 .grid{
   display:grid;
@@ -781,26 +805,28 @@ button{font-family:inherit}
 }
 .specs{
   border-top:1px solid rgba(255,255,255,.1);
-  display:grid;
-  grid-template-columns:1fr 1fr;
+  margin-top:8px;
 }
 .spec{
-  border-bottom:1px solid rgba(255,255,255,.1);
-  padding:16px 0;
+  display:flex;
+  justify-content:space-between;
+  align-items:baseline;
+  gap:16px;
+  padding:11px 0;
+  border-bottom:1px solid rgba(255,255,255,.08);
 }
-.spec:nth-child(odd){padding-right:18px;border-right:1px solid rgba(255,255,255,.1)}
-.spec:nth-child(even){padding-left:18px}
 .spec-l{
   font-family:var(--sans);
   font-size:11px;
   letter-spacing:.08em;
   color:rgba(255,255,255,.5);
-  margin-bottom:6px;
+  white-space:nowrap;
+  flex-shrink:0;
 }
-.spec-v{font-size:18px;font-weight:600;color:#fff;letter-spacing:.01em}
-.spec-v.size{font-size:14px;font-family:var(--mono);letter-spacing:0;line-height:1.4}
-.spec-v.loc{font-size:15px;}
-.spec-v .u{font-size:11.5px;color:rgba(255,255,255,.5);font-weight:500;margin-left:3px}
+.spec-v{font-size:16px;font-weight:600;color:#fff;text-align:right;letter-spacing:.01em}
+.spec-v.size{font-size:13px;font-family:var(--mono);letter-spacing:0;line-height:1.5}
+.spec-v.loc{font-size:14px;}
+.spec-v .u{font-size:11px;color:rgba(255,255,255,.5);font-weight:500;margin-left:2px}
 
 .lb-note{
   margin-top:20px;

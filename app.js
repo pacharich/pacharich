@@ -94,59 +94,55 @@ function photoSrc(photo) {
 }
 
 // ============ Grid render ============
-function renderGrid() {
-  const list = currentTab === 'female' ? FEMALES : MALES;
-  const grid = $('#grid');
-  grid.innerHTML = '';
+function buildCard(m, i, gender) {
+  const card = document.createElement('article');
+  card.className = 'card';
+  card.dataset.id = m.id;
 
-  list.forEach((m, i) => {
-    const card = document.createElement('article');
-    card.className = 'card';
-    card.dataset.id = m.id;
-    card.dataset.idx = i;
+  const numLabel = (gender === 'female' ? '女性' : '男性') + String(i + 1).padStart(2, '0');
+  const savedTab = currentTab;
+  currentTab = gender;
+  const photos = getPhotos(m);
+  currentTab = savedTab;
+  const firstPhoto = photos[0];
 
-    const numLabel = (currentTab === 'female' ? '女性' : '男性') + String(i + 1).padStart(2, '0');
-    const photos = getPhotos(m);
-    const firstPhoto = photos[0];
-
-    card.innerHTML = `
-      <div class="card-photo">
-        ${firstPhoto
-          ? `<img class="card-img" src="${photoSrc(firstPhoto)}" alt="${m.name}" loading="lazy">`
-          : '<div class="card-img-empty"></div>'
-        }
-        <span class="card-no">${numLabel}</span>
-        <span class="card-photocount">${photos.length}枚</span>
+  card.innerHTML = `
+    <div class="card-photo">
+      ${firstPhoto
+        ? `<img class="card-img" src="${photoSrc(firstPhoto)}" alt="${m.name}" loading="lazy">`
+        : '<div class="card-img-empty"></div>'
+      }
+      <span class="card-no">${numLabel}</span>
+      <span class="card-photocount">${photos.length}枚</span>
+    </div>
+    <div class="card-body">
+      <div class="card-name">
+        <span class="nm">${m.name}</span>
+        <span class="age">${m.age}歳</span>
       </div>
-      <div class="card-body">
-        <div class="card-name">
-          <span class="nm">${m.name}</span>
-          <span class="age">${m.age}歳</span>
-        </div>
-        <div class="card-loc">${m.location}</div>
-        <div class="card-stat">
-          <span><span class="l">身長</span>${m.height}cm</span>
-          ${m.exp != null ? `<span><span class="l">芸歴</span>${m.exp}年</span>` : (currentTab === 'female' ? `<span><span class="l">芸歴</span>なし</span>` : '')}
-        </div>
+      <div class="card-loc">${m.location}</div>
+      <div class="card-stat">
+        <span><span class="l">身長</span>${m.height}cm</span>
+        ${m.exp != null ? `<span><span class="l">芸歴</span>${m.exp}年</span>` : (gender === 'female' ? `<span><span class="l">芸歴</span>なし</span>` : '')}
       </div>
-    `;
-    card.addEventListener('click', () => openLightbox(i));
-    grid.appendChild(card);
+    </div>
+  `;
+  card.addEventListener('click', () => {
+    currentTab = gender;
+    lbList = gender === 'female' ? FEMALES : MALES;
+    openLightbox(i);
   });
-
-  $('#gridCount').textContent = list.length;
-  $('#gridLabel').textContent = '';
+  return card;
 }
 
-// ============ Tabs ============
-$$('.tab').forEach(t => {
-  t.addEventListener('click', () => {
-    $$('.tab').forEach(x => x.classList.remove('active'));
-    t.classList.add('active');
-    currentTab = t.dataset.tab;
-    renderGrid();
-  });
-});
+function renderAllGrids() {
+  const gf = $('#gridFemale');
+  const gm = $('#gridMale');
+  gf.innerHTML = '';
+  gm.innerHTML = '';
+  FEMALES.forEach((m, i) => gf.appendChild(buildCard(m, i, 'female')));
+  MALES.forEach((m, i)   => gm.appendChild(buildCard(m, i, 'male')));
+}
 
 // ============ Lightbox ============
 const lb = $('#lb');
@@ -287,4 +283,4 @@ document.addEventListener('keydown', e => {
 });
 
 // ============ Init ============
-renderGrid();
+renderAllGrids();
