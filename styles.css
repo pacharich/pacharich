@@ -1,13 +1,13 @@
 :root{
-  --ink:#0b0b0c;
-  --ink-2:#262629;
+  --ink:#1a1a1c;
+  --ink-2:#2d2d30;
   --ink-3:#4a4a4f;
-  --muted:#7b7b82;
-  --line:#e8e6e1;
-  --line-2:#f0eee8;
-  --bg:#fbf9f4;
-  --bg-2:#f5f2ea;
-  --bg-3:#eeebe2;
+  --muted:#8a8a92;
+  --line:#e4e4e8;
+  --line-2:#ececf0;
+  --bg:#ffffff;
+  --bg-2:#f5f5f7;
+  --bg-3:#ebebee;
   --paper:#ffffff;
   --accent:#c4452d;
   --accent-2:#1f1f22;
@@ -41,7 +41,7 @@ button{font-family:inherit}
   position:sticky;
   top:0;
   z-index:40;
-  background:rgba(251,249,244,.86);
+  background:rgba(255,255,255,.88);
   backdrop-filter:saturate(180%) blur(14px);
   border-bottom:1px solid var(--line);
 }
@@ -423,12 +423,11 @@ button{font-family:inherit}
 /* ========== Model grid ========== */
 .grid{
   display:grid;
-  grid-template-columns:repeat(5,1fr);
-  gap:22px;
+  grid-template-columns:repeat(3,1fr);
+  gap:28px;
 }
-@media (max-width:1240px){.grid{grid-template-columns:repeat(4,1fr)}}
-@media (max-width:900px){.grid{grid-template-columns:repeat(3,1fr)}}
-@media (max-width:600px){.grid{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:900px){.grid{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:600px){.grid{grid-template-columns:1fr}}
 
 .card{
   background:var(--paper);
@@ -456,9 +455,16 @@ button{font-family:inherit}
   position:relative;
   overflow:hidden;
 }
-.card-photo image-slot{
+.card-img{
   width:100%;
   height:100%;
+  object-fit:cover;
+  display:block;
+}
+.card-img-empty{
+  width:100%;
+  height:100%;
+  background:var(--bg-3);
 }
 .card-no{
   position:absolute;
@@ -492,24 +498,22 @@ button{font-family:inherit}
   z-index:2;
   backdrop-filter:blur(8px);
 }
-.card-check{
+.card-photocount{
   position:absolute;
-  top:12px;
-  right:12px;
-  width:28px;
-  height:28px;
-  border-radius:50%;
-  background:var(--accent);
+  bottom:10px;
+  right:10px;
+  font-family:var(--mono);
+  font-size:10px;
+  font-weight:600;
+  letter-spacing:.04em;
+  background:rgba(11,11,12,.65);
   color:#fff;
-  display:none;
-  align-items:center;
-  justify-content:center;
-  font-size:14px;
-  font-weight:700;
-  z-index:3;
-  box-shadow:0 4px 12px rgba(196,69,45,.45);
+  padding:3px 8px;
+  border-radius:3px;
+  z-index:2;
+  backdrop-filter:blur(6px);
+  white-space:nowrap;
 }
-.card.selected .card-check{display:flex}
 .card-body{
   padding:16px 18px 18px;
   display:flex;
@@ -679,13 +683,27 @@ button{font-family:inherit}
   padding:32px 24px 16px;
   position:relative;
 }
-.lb-main image-slot{
-  width:auto;
+/* 1枚目：カバー表示 */
+.lb-img-cover{
+  width:100%;
   height:100%;
-  max-width:100%;
-  aspect-ratio:3/4;
+  object-fit:cover;
   border-radius:6px;
-  overflow:hidden;
+  display:block;
+}
+/* 2枚目以降：原寸表示 */
+.lb-img-natural{
+  display:block;
+  max-width:none;
+  border-radius:4px;
+}
+.lb-main--natural{
+  overflow:auto;
+  align-items:flex-start;
+  justify-content:flex-start;
+  padding:16px;
+  scrollbar-width:thin;
+  scrollbar-color:rgba(255,255,255,.2) transparent;
 }
 .lb-strip{
   padding:14px 24px 24px;
@@ -709,7 +727,7 @@ button{font-family:inherit}
   background:#1c1c1f;
   transition:transform .15s, border-color .15s;
 }
-.lb-thumb image-slot{width:100%;height:100%}
+.lb-thumb img{width:100%;height:100%;object-fit:cover;display:block;}
 .lb-thumb.active{border-color:var(--accent)}
 .lb-thumb:hover{transform:translateY(-2px)}
 .lb-thumb-no{
@@ -850,6 +868,34 @@ button{font-family:inherit}
   font-weight:500;
 }
 
+/* ---- Name row ---- */
+.lb-name-row{margin-bottom:4px}
+
+/* ---- Achievements ---- */
+.lb-achievements{
+  margin-top:20px;
+  padding-top:20px;
+  border-top:1px solid rgba(255,255,255,.1);
+}
+.lb-ach-title{
+  font-family:var(--mono);
+  font-size:10px;
+  letter-spacing:.16em;
+  color:rgba(255,255,255,.45);
+  margin-bottom:10px;
+  text-transform:uppercase;
+}
+.lb-ach-list{
+  margin:0;
+  padding:0 0 0 14px;
+  font-size:11.5px;
+  color:rgba(255,255,255,.7);
+  line-height:1.9;
+  list-style:disc;
+}
+.lb-ach-list li::marker{color:var(--accent)}
+
+/* ---- Bottom actions ---- */
 .lb-actions-bottom{
   margin-top:auto;
   padding-top:28px;

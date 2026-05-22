@@ -3,30 +3,19 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<meta name="ext-resource-dependency" content=".image-slots.state.json" data-resource-id="imageSlotsState" />
 <title>モデル候補リスト｜アトールテラス鴨川 様 ご提案資料</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;600;700&family=Noto+Serif+JP:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
 </head>
-<body data-screen-label="01 モデル候補リスト">
-
-<template id="__bundler_thumbnail">
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid meet">
-    <rect width="100" height="100" fill="#0b0b0c"/>
-    <g transform="translate(50 50)">
-      <circle r="22" fill="none" stroke="#c4452d" stroke-width="3"/>
-      <text x="0" y="3" text-anchor="middle" font-family="serif" font-size="18" font-weight="600" fill="#fbf9f4" font-style="italic">M</text>
-    </g>
-  </svg>
-</template>
+<body>
 
 <!-- ====== Nav ====== -->
 <header class="nav">
   <div class="nav-inner">
     <div class="brand">
-      <span class="brand-mark">パシャリッチ</span>
+      <span class="brand-mark">PashaRich</span>
       <span class="brand-sub">キャスティング提案書 ／ 2026年5月版</span>
     </div>
     <nav class="nav-links">
@@ -44,9 +33,12 @@
 <section class="hero">
   <div>
     <p class="hero-eyebrow">キャスティング候補一覧 ／ アトールテラス鴨川様 ／ 2026年5月版</p>
-    <h1 class="hero-title" style="font-size: 35px">モデル候補<br>リスト　<br><br>アトールテラス鴨川 様<br>キャスティング候補者提案となります。</h1>
+    <h1 class="hero-title" style="font-size:clamp(36px,5vw,72px)">
+      モデル候補<br>リスト<br>
+      <span class="small">アトールテラス鴨川 様<br>キャスティング候補者提案となります。</span>
+    </h1>
   </div>
-  </section>
+</section>
 
 <!-- ====== Models ====== -->
 <section class="section" id="female">
@@ -57,49 +49,32 @@
     </div>
     <div style="display:flex;flex-direction:column;align-items:flex-end;gap:14px">
       <div class="tabs" role="tablist">
-        <button class="tab active" data-tab="female" role="tab">女性 <span class="role"></span><span class="count">9</span></button>
-        <button class="tab" data-tab="male" role="tab">男性 <span class="role"></span><span class="count">6</span></button>
+        <button class="tab active" data-tab="female" role="tab">女性 <span class="count">3</span></button>
+        <button class="tab" data-tab="male" role="tab">男性 <span class="count">3</span></button>
       </div>
-      <div class="section-tail"><span id="gridLabel">女性 ／ </span> · <span id="gridCount">9</span> 名</div>
+      <div class="section-tail"><span id="gridLabel"></span> · <span id="gridCount">3</span> 名</div>
     </div>
   </div>
 
   <div id="grid" class="grid"></div>
-
-  <div style="margin-top:36px;padding:18px 22px;background:var(--paper);border:1px solid var(--line);border-radius:10px;display:flex;align-items:center;gap:14px;font-size:12.5px;color:var(--ink-3);line-height:1.6">
-    <span style="font-family:var(--mono);font-size:10px;letter-spacing:.16em;background:var(--bg-3);color:var(--ink-2);padding:5px 9px;border-radius:3px;flex-shrink:0">操作方法</span>
-    <span>各カードをクリックすると、そのモデルの宣材写真をすべてご覧いただけます。
-気になる候補は「選考に追加」していただくと下部のリストにまとまります。
-※写真スロットは画像をドラッグ＆ドロップで配置できます。</span>
-  </div>
 </section>
 
 <!-- ====== Footer ====== -->
 <footer>
   <div class="foot">
     <div>
-      <div class="foot-brand">パシャリッチ</div>
-      <p class="foot-tag">広告・Web・出版分野のキャスティングをワンストップでサポート。 
-本提案資料は アトールテラス鴨川 様向けに作成された機密資料です。
-
-</p>
+      <div class="foot-brand">PashaRich</div>
+      <p class="foot-tag">広告・Web・出版分野のキャスティングをワンストップでサポート。<br>
+      本提案資料は アトールテラス鴨川 様向けに作成された機密資料です。</p>
     </div>
     <div class="foot-col">
       <h4>案件</h4>
       <p>アトールテラス鴨川 様</p>
       <p>キャスティング提案 2026</p>
-      <p>キャスティング提案</p>
     </div>
-    <div class="foot-col" style="color: rgb(123, 123, 130); font-size: 12.5px">
+    <div class="foot-col" style="color:rgb(123,123,130);font-size:12.5px">
       <h4>運営元</h4>
-      <p>株式会社
-ワールドチェンジ
-アナリシス
-</p>
-      <a href="mailto:casting@example.com">
-</a>
-      <p>
-</p>
+      <p>株式会社ワールドチェンジアナリシス</p>
     </div>
     <div class="foot-col">
       <h4>ステータス</h4>
@@ -109,8 +84,8 @@
     </div>
   </div>
   <div class="foot-row">
-    <span>© 2026 パシャリッチ — アトールテラス鴨川 様向け 機密提案資料</span>
-    <span> 2026年5月</span>
+    <span>© 2026 PashaRich — アトールテラス鴨川 様向け 機密提案資料</span>
+    <span>2026年5月</span>
   </div>
 </footer>
 
@@ -118,12 +93,8 @@
 <div class="lb" id="lb" role="dialog" aria-modal="true">
   <div class="lb-inner">
     <div class="lb-top">
-      <div class="lb-id" id="lbId"><span class="accent">女性01</span> &nbsp;／&nbsp; 全04カット中 <strong>01</strong>枚目</div>
+      <div class="lb-id" id="lbId"><span class="accent">女性01</span></div>
       <div class="lb-actions">
-        <button class="lb-btn" id="lbReplace" title="現在の画像を差し替え"><span style="font-family:var(--mono)">↻</span> 画像を差し替え</button>
-        <button class="lb-btn danger" id="lbClear" title="現在の画像を削除"><span style="font-family:var(--mono)">×</span> 削除</button>
-        <span style="width:1px;height:22px;background:rgba(255,255,255,.16);margin:0 4px"></span>
-        <button class="lb-btn" id="lbSelect">この候補を選考に追加</button>
         <button class="lb-close" id="lbClose" aria-label="閉じる">✕</button>
       </div>
     </div>
@@ -133,34 +104,46 @@
         <div class="lb-strip" id="lbStrip"></div>
       </div>
       <div class="lb-info">
-        <div class="lb-kicker" id="lbKicker">女性 ／ </div>
-        <h2 class="lb-name" id="lbName">アコ <span class="age">31歳</span></h2>
-        <p class="lb-loc" id="lbLoc">東京</p>
+        <div class="lb-name-row">
+          <h2 class="lb-name" id="lbName">スカイ <span class="age">28歳</span></h2>
+          <p class="lb-loc" id="lbLoc">東京都</p>
+        </div>
 
         <div class="specs">
           <div class="spec">
             <div class="spec-l">身長</div>
-            <div class="spec-v"><span id="lbHeight">161</span><span class="u">cm</span></div>
+            <div class="spec-v"><span id="lbHeight">160</span><span class="u">cm</span></div>
           </div>
           <div class="spec">
             <div class="spec-l">サイズ</div>
-            <div class="spec-v size" id="lbSize">B81 / W60 / H86</div>
+            <div class="spec-v size" id="lbSize">B 78 / W 58 / H 86</div>
           </div>
-          <div class="spec">
-            <div class="spec-l">モデル歴</div>
-            <div class="spec-v"><span id="lbExp">6</span><span class="u">年</span></div>
+          <div class="spec" id="specShoe">
+            <div class="spec-l">シューズ</div>
+            <div class="spec-v"><span id="lbShoe">23.5cm</span></div>
           </div>
-          <div class="spec">
-            <div class="spec-l">年齢</div>
-            <div class="spec-v"><span id="lbAge">31</span><span class="u">歳</span></div>
+          <div class="spec" id="specExp">
+            <div class="spec-l">芸歴</div>
+            <div class="spec-v"><span id="lbExp">7年</span></div>
+          </div>
+          <div class="spec" id="specHair" style="display:none">
+            <div class="spec-l">ヘアカラー</div>
+            <div class="spec-v"><span id="lbHair"></span></div>
+          </div>
+          <div class="spec" id="specEye" style="display:none">
+            <div class="spec-l">瞳カラー</div>
+            <div class="spec-v"><span id="lbEye"></span></div>
+          </div>
+          <div class="spec" id="specClothes" style="display:none">
+            <div class="spec-l">お洋服サイズ</div>
+            <div class="spec-v"><span id="lbClothes"></span></div>
           </div>
         </div>
 
-        <div class="lb-note" id="lbNote" style="display:none"></div>
-
-        <div class="lb-shots">
-          <div class="lb-shots-l">宣材写真一覧</div>
-          <div class="lb-shots-v" id="lbShotsV">4 <span class="of">全4カット</span></div>
+        <!-- 実績（女性のみ） -->
+        <div class="lb-achievements" id="lbAchievements">
+          <div class="lb-ach-title" id="lbAchTitle">ブライダルモデル活動実績</div>
+          <ul class="lb-ach-list" id="lbAchList"></ul>
         </div>
 
         <div class="lb-actions-bottom">
@@ -170,59 +153,13 @@
       </div>
     </div>
     <div class="lb-bottom">
-      <div class="lb-nav">
-        <span class="lb-hint">操作：<kbd>←</kbd><kbd>→</kbd> モデル切替 ／ <kbd>↑</kbd><kbd>↓</kbd> 写真切替 ／ <kbd>Esc</kbd> 閉じる</span>
-      </div>
-      <span class="lb-hint">画像はサムネイルをクリックで切替</span>
+      <span class="lb-hint">操作：<kbd>←</kbd><kbd>→</kbd> モデル切替 ／ <kbd>↑</kbd><kbd>↓</kbd> 写真切替 ／ <kbd>Esc</kbd> 閉じる</span>
+      <span class="lb-hint">サムネイルをクリックで写真切替</span>
     </div>
   </div>
 </div>
 
-<!-- ====== Selection bar ====== -->
-<div class="select-bar" id="sb">
-  <div>
-    <span class="sb-l">選択中</span>
-    <span class="sb-count" id="sbCount">0</span>
-  </div>
-  <div class="sb-list" id="sbList"><span class="sb-empty">候補を選択してください</span></div>
-  <button class="sb-cta" id="sbCta" disabled>この構成で進める <span style="font-family:var(--mono)">→</span></button>
-</div>
-
-<script>
-  // When bundled standalone, image-slot.js fetches `.image-slots.state.json`
-  // which doesn't exist as a separate file. Intercept that fetch and redirect
-  // it to the inlined resource blob URL (set by the bundler on
-  // window.__resources). In dev (no __resources), this is a no-op.
-  (function(){
-    if (!window.__resources || !window.__resources.imageSlotsState) return;
-    const _fetch = window.fetch.bind(window);
-    window.fetch = function(url, ...rest){
-      try {
-        const s = typeof url === 'string' ? url : (url && url.url) || '';
-        if (s === '.image-slots.state.json' || s.endsWith('/.image-slots.state.json')){
-          return _fetch(window.__resources.imageSlotsState, ...rest);
-        }
-      } catch(e){}
-      return _fetch(url, ...rest);
-    };
-  })();
-</script>
-<script src="image-slot.js"></script>
+<script src="photos.js"></script>
 <script src="app.js"></script>
 </body>
 </html>
-
-<style id="__om-edit-overrides">
-#docs-internal-guid-d91bb322-7fff-d920-41aa-da6167e8d20b >:is(h1,h2,h3,h4,h5,h6,p,li,dt,dd,blockquote,figcaption,label,span,a,em,strong,small,td,th,caption) { color: rgb(38, 38, 41) !important }
-#docs-internal-guid-1f1a7d24-7fff-f40a-0f25-7f7280f552a5 >:is(h1,h2,h3,h4,h5,h6,p,li,dt,dd,blockquote,figcaption,label,span,a,em,strong,small,td,th,caption) { font-size: 11px !important }
-#brief .b-note >div:nth-child(1) span:nth-child(7) { font-size: 11px !important }
-#brief .b-note >div:nth-child(1) span:nth-child(4) { font-size: 11px !important }
-.b-note >div:nth-child(1) >div >span:nth-child(1) { font-size: 11px !important }
-div:nth-child(3) >.b-note span:nth-child(1) >:is(h1,h2,h3,h4,h5,h6,p,li,dt,dd,blockquote,figcaption,label,span,a,em,strong,small,td,th,caption) { font-size: 11px !important }
-.b-note >div:nth-child(2) >:is(h1,h2,h3,h4,h5,h6,p,li,dt,dd,blockquote,figcaption,label,span,a,em,strong,small,td,th,caption) >span:nth-child(1) { font-size: 11px !important }
-#brief .b-note >div >span:nth-child(4) { font-size: 11px !important }
-#brief .b-note >div:nth-child(1) >:is(h1,h2,h3,h4,h5,h6,p,li,dt,dd,blockquote,figcaption,label,span,a,em,strong,small,td,th,caption) { font-size: 11px !important }
-#brief .b-note >div:nth-child(2) >span:nth-child(1) { font-size: 11px !important }
-#brief .b-note >div:nth-child(3) >div { font-size: 0px !important }
-#brief .b-note >div:nth-child(3) >div { font-size: 20px !important }
-</style>
