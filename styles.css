@@ -799,6 +799,7 @@ button{font-family:inherit}
 }
 .spec-v{font-size:18px;font-weight:600;color:#fff;letter-spacing:.01em}
 .spec-v.size{font-size:14px;font-family:var(--mono);letter-spacing:0;line-height:1.4}
+.spec-v.loc{font-size:15px;}
 .spec-v .u{font-size:11.5px;color:rgba(255,255,255,.5);font-weight:500;margin-left:3px}
 
 .lb-note{

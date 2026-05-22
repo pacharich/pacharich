@@ -207,7 +207,9 @@ function renderLightbox() {
   $('#lbName').innerHTML = `${m.name} <span class="age">${m.age}歳</span>`;
   $('#lbLoc').textContent = m.location;
   $('#lbHeight').textContent = m.height;
+  $('#lbAge').textContent = m.age;
   $('#lbSize').textContent = m.size;
+  $('#lbLocSpec').textContent = m.location;
 
   // shoe
   const specShoe = $('#specShoe');
