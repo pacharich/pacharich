@@ -26,7 +26,7 @@ const FEMALES = [
   },
   {
     id: 'masami', name: 'まさみ', age: 32,
-    height: 182, size: 'B 81.5cm / W 62cm / H 88cm',
+    height: 163, size: 'B 81.5cm / W 62cm / H 88cm',
     shoe: '23.0cm', exp: 5, location: '東京都',
     achievementTitle: 'WEB・広告',
     achievements: [
@@ -45,7 +45,7 @@ const FEMALES = [
   {
     id: 'yuka', name: 'ユウカ', age: 25,
     height: 158, size: 'B 77cm / W 58cm / H 86cm',
-    shoe: '23.5cm', exp: null, location: '佐賀県',
+    shoe: '23.5cm', exp: 6, location: '佐賀県',
     achievementTitle: 'ブライダル活動実績',
     achievements: [
       'IKK 株式会社様','アートホテル小倉ニュータガワ様',
@@ -61,7 +61,7 @@ const MALES = [
     id: 'minato', name: 'みなと', age: 33,
     height: 177, size: 'C 92cm / W 70cm / H 88cm',
     shoe: '28.0cm', clothesSize: 'L', hairColor: 'Black', eyeColor: 'Brown',
-    location: '東京都',
+    exp: 9, location: '東京都',
     achievementSections: [
       {
         title: 'WEB広告・ホームページ',
@@ -91,7 +91,7 @@ const MALES = [
     id: 'seiki', name: 'せいき', age: 29,
     height: 182, size: 'C 95cm / W 73cm / H 98cm',
     shoe: '27.5cm', clothesSize: 'L', hairColor: 'Black',
-    location: '東京都',
+    exp: 6, location: '東京都',
     achievementTitle: 'ブライダルモデル活動実績',
     achievementNote: '※全て新郎役での出演',
     achievements: [
@@ -105,7 +105,7 @@ const MALES = [
   {
     id: 'yuki', name: 'ゆうき', age: 28,
     height: 181, size: 'B 85cm / W 79cm / H 93cm',
-    location: '東京都',
+    exp: 5, location: '東京都',
     achievementTitle: 'ブライダルモデル活動実績',
     achievementNote: '※全て新郎役での出演',
     achievements: [
@@ -164,7 +164,7 @@ function buildCard(m, i, gender) {
       <div class="card-loc">${m.location}</div>
       <div class="card-stat">
         <span><span class="l">身長</span>${m.height}cm</span>
-        ${m.exp != null ? `<span><span class="l">芸歴</span>${m.exp}年</span>` : (gender === 'female' ? `<span><span class="l">芸歴</span>なし</span>` : '')}
+        ${m.exp != null ? `<span><span class="l">芸歴</span>${m.exp}年</span>` : `<span><span class="l">芸歴</span>なし</span>`}
       </div>
     </div>
   `;
@@ -255,12 +255,8 @@ function renderLightbox() {
 
   // exp
   const specExp = $('#specExp');
-  if (currentTab === 'female') {
-    specExp.style.display = '';
-    $('#lbExp').textContent = m.exp != null ? m.exp + '年' : 'なし';
-  } else {
-    specExp.style.display = 'none';
-  }
+  specExp.style.display = '';
+  $('#lbExp').textContent = m.exp != null ? m.exp + '年' : 'なし';
 
   // hair / eye / clothes (male)
   const specHair = $('#specHair');
