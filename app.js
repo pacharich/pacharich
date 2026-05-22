@@ -61,18 +61,59 @@ const MALES = [
     id: 'minato', name: 'みなと', age: 33,
     height: 177, size: 'C 92cm / W 70cm / H 88cm',
     shoe: '28.0cm', clothesSize: 'L', hairColor: 'Black', eyeColor: 'Brown',
-    location: '東京都'
+    location: '東京都',
+    achievementSections: [
+      {
+        title: 'WEB広告・ホームページ',
+        items: [
+          'ブライダル撮影190社以上（インターコンチネンタルホテル・マリオット大阪・東京大神宮・アニヴェルセルみなとみらい・ホテルオークラ新潟・ウエスティンホテル東京 など）',
+          'ウエットスーツ ゴーアイランド',
+          'スギ薬局 Prieclat U',
+          '江戸東京きらり',
+          'EDWIN',
+          'Honda CBR Design Festa',
+        ]
+      },
+      {
+        title: 'テレビCM',
+        items: [
+          'IQOS 10周年記念 イメージモデル',
+          'オリオンビール 75BEER IPA',
+          'ビジュピコ',
+          '御茶園（台湾）',
+          '日産 エクストレイル',
+          'ダノンビオ',
+        ]
+      }
+    ]
   },
   {
     id: 'seiki', name: 'せいき', age: 29,
     height: 182, size: 'C 95cm / W 73cm / H 98cm',
     shoe: '27.5cm', clothesSize: 'L', hairColor: 'Black',
-    location: '東京都'
+    location: '東京都',
+    achievementTitle: 'ブライダルモデル活動実績',
+    achievementNote: '※全て新郎役での出演',
+    achievements: [
+      'ウェスティンホテル横浜','セントレジデンスホテル大阪','ワタベウェディング',
+      'プラチナドレススタイル','ドレリッチ横浜','ONE LIFE 横浜','fanta dress',
+      'アンテリーベウェディング','京都ノーザンチャーチ北山教会',
+      'ノートルダム横浜 みなとみらい','ラバンク ドロア横浜結婚式場',
+      'ウェディングドレスブランド ituwa（イツワ）','スタジオマーリン 韓国フォトスタジオ',
+    ]
   },
   {
     id: 'yuki', name: 'ゆうき', age: 28,
     height: 181, size: 'B 85cm / W 79cm / H 93cm',
-    location: '東京都'
+    location: '東京都',
+    achievementTitle: 'ブライダルモデル活動実績',
+    achievementNote: '※全て新郎役での出演',
+    achievements: [
+      'ホテルオークラ東京','アウトリガーリーフ（Hawaii🇺🇸）','ホテル雅叙園東京',
+      'ホテル椿山荘東京','ウェスティンホテル横浜','サンシャイン水族館','東京大神宮',
+      'JRホテルクレメント徳島','ヒカリフルコート高崎','ロイヤルチェスター太田',
+      'ベルブランシェ天童','リーガロイヤルホテル京都','シェラトン東京ベイ',
+    ]
   },
 ];
 
@@ -245,12 +286,24 @@ function renderLightbox() {
     schedSection.style.display = 'none';
   }
 
-  // achievements (female only)
+  // achievements (all genders)
   const achSection = $('#lbAchievements');
-  if (currentTab === 'female' && m.achievements && m.achievements.length) {
+  if (m.achievementSections && m.achievementSections.length) {
+    // multi-section format (みなと)
+    achSection.style.display = '';
+    $('#lbAchTitle').textContent = m.achievementTitle || '活動実績';
+    $('#lbAchList').innerHTML = m.achievementSections.map(sec => `
+      <li class="ach-section-title">${sec.title}</li>
+      ${sec.items.map(a => `<li>${a}</li>`).join('')}
+    `).join('');
+  } else if (m.achievements && m.achievements.length) {
+    // single-section format (females, せいき, ゆうき)
     achSection.style.display = '';
     $('#lbAchTitle').textContent = m.achievementTitle || '実績';
-    $('#lbAchList').innerHTML = m.achievements.map(a => `<li>${a}</li>`).join('');
+    const noteHtml = m.achievementNote
+      ? `<li class="ach-note">${m.achievementNote}</li>`
+      : '';
+    $('#lbAchList').innerHTML = noteHtml + m.achievements.map(a => `<li>${a}</li>`).join('');
   } else {
     achSection.style.display = 'none';
   }
