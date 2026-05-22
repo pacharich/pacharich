@@ -1,3 +1,13 @@
+// ============ 出演可能日 ============
+const AVAILABILITY = {
+  sky:    [{ date: '6/30（月）', ok: false }, { date: '7/1（火）', ok: true }],
+  masami: [{ date: '6/30（月）', ok: true  }, { date: '7/1（火）', ok: true }],
+  yuka:   [{ date: '6/30（月）', ok: true  }, { date: '7/1（火）', ok: true }],
+  minato: [{ date: '6/30（月）', ok: false }, { date: '7/1（火）', ok: true }],
+  seiki:  [{ date: '6/30（月）', ok: true  }, { date: '7/1（火）', ok: true }],
+  yuki:   [{ date: '6/30（月）', ok: false }, { date: '7/1（火）', ok: true }],
+};
+
 // ============ Model Data ============
 const FEMALES = [
   {
@@ -168,15 +178,7 @@ function renderLightbox() {
     const img = document.createElement('img');
     img.src = photoSrc(photo);
     img.alt = m.name;
-    if (lbShot === 0) {
-      img.className = 'lb-img-cover';
-      main.classList.remove('lb-main--natural');
-    } else {
-      img.className = 'lb-img-natural';
-      img.style.width = photo.w + 'px';
-      img.style.height = photo.h + 'px';
-      main.classList.add('lb-main--natural');
-    }
+    img.className = lbShot === 0 ? 'lb-img-cover' : 'lb-img-natural';
     main.appendChild(img);
   }
 
@@ -228,6 +230,22 @@ function renderLightbox() {
   if (m.hairColor) { specHair.style.display = ''; $('#lbHair').textContent = m.hairColor; } else { specHair.style.display = 'none'; }
   if (m.eyeColor)  { specEye.style.display = '';  $('#lbEye').textContent = m.eyeColor; }  else { specEye.style.display = 'none'; }
   if (m.clothesSize) { specClothes.style.display = ''; $('#lbClothes').textContent = m.clothesSize + 'サイズ'; } else { specClothes.style.display = 'none'; }
+
+  // 出演可能日
+  const avail = AVAILABILITY[m.id] || [];
+  const schedSection = $('#lbSchedule');
+  if (avail.length) {
+    schedSection.style.display = '';
+    $('#lbScheduleCards').innerHTML = avail.map(d => `
+      <div class="avail-card ${d.ok ? 'avail-ok' : 'avail-ng'}">
+        <span class="avail-date">${d.date}</span>
+        <span class="avail-badge">${d.ok ? '○' : '✖'}</span>
+        <span class="avail-label">${d.ok ? '出演可' : '出演不可'}</span>
+      </div>
+    `).join('');
+  } else {
+    schedSection.style.display = 'none';
+  }
 
   // achievements (female only)
   const achSection = $('#lbAchievements');
