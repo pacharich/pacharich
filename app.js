@@ -1,11 +1,11 @@
 // ============ 出演可能日 ============
 const AVAILABILITY = {
-  sky:    [{ date: '6/30（月）', ok: false }, { date: '7/1（火）', ok: true }],
-  masami: [{ date: '6/30（月）', ok: true  }, { date: '7/1（火）', ok: true }],
-  yuka:   [{ date: '6/30（月）', ok: true  }, { date: '7/1（火）', ok: true }],
-  minato: [{ date: '6/30（月）', ok: false }, { date: '7/1（火）', ok: true }],
-  seiki:  [{ date: '6/30（月）', ok: true  }, { date: '7/1（火）', ok: true }],
-  yuki:   [{ date: '6/30（月）', ok: false }, { date: '7/1（火）', ok: true }],
+  sky:    [{ date: '6/30（火）', ok: false }, { date: '7/1（水）', ok: true }],
+  masami: [{ date: '6/30（火）', ok: true  }, { date: '7/1（水）', ok: true }],
+  yuka:   [{ date: '6/30（火）', ok: true  }, { date: '7/1（水）', ok: true }],
+  minato: [{ date: '6/30（火）', ok: false }, { date: '7/1（水）', ok: true }],
+  seiki:  [{ date: '6/30（火）', ok: true  }, { date: '7/1（水）', ok: true }],
+  yuki:   [{ date: '6/30（火）', ok: false }, { date: '7/1（水）', ok: true }],
 };
 
 // ============ Model Data ============
