@@ -1,11 +1,21 @@
 // ============ 出演可能日 ============
+const SCHEDULE_DATES = ['9/1（火）', '9/3（木）', '9/4（金）', '9/15（火）', '9/16（水）'];
+
 const AVAILABILITY = {
-  sky:    [{ date: '6/30（火）', ok: false }, { date: '7/1（水）', ok: true }],
-  masami: [{ date: '6/30（火）', ok: true  }, { date: '7/1（水）', ok: true }],
-  yuka:   [{ date: '6/30（火）', ok: true  }, { date: '7/1（水）', ok: true }],
-  minato: [{ date: '6/30（火）', ok: false }, { date: '7/1（水）', ok: true }],
-  seiki:  [{ date: '6/30（火）', ok: true  }, { date: '7/1（水）', ok: true }],
-  yuki:   [{ date: '6/30（火）', ok: false }, { date: '7/1（水）', ok: true }],
+  sky:      SCHEDULE_DATES.map(date => ({ date, status: 'pending' })),
+  masami:   SCHEDULE_DATES.map(date => ({ date, status: 'pending' })),
+  yuka:     SCHEDULE_DATES.map(date => ({ date, status: 'pending' })),
+  minato:   SCHEDULE_DATES.map(date => ({ date, status: 'pending' })),
+  seiki:    SCHEDULE_DATES.map(date => ({ date, status: 'pending' })),
+  yuki:     SCHEDULE_DATES.map(date => ({ date, status: 'pending' })),
+  kaneko:   SCHEDULE_DATES.map(date => ({ date, status: 'ok' })),
+  nakamura: [
+    { date: '9/1（火）',  status: 'ok' },
+    { date: '9/3（木）',  status: 'ok' },
+    { date: '9/4（金）',  status: 'ok' },
+    { date: '9/15（火）', status: 'pending' },
+    { date: '9/16（水）', status: 'ok' },
+  ],
 };
 
 // ============ Model Data ============
@@ -52,6 +62,54 @@ const FEMALES = [
       'WITH THE STYLE FUKUOKA 1*','THE BASICS FUKUOKA 1*',
       'We Green Resort 1*','THE GRAND HOUSE 様',
       'パサージュ琴海ウェディング 様','ホテルマリターレ創世（佐賀／久留米）様'
+    ]
+  },
+  {
+    id: 'kaneko', name: '金子エリカ', age: '確認中',
+    height: 169, size: '確認中',
+    shoe: '確認中', exp: 10, location: '確認中',
+    achievementTitle: '実績',
+    achievementSections: [
+      {
+        title: '実績',
+        items: [
+          'STILL&MOVIE','株式会社資生堂（LAURA MERCIER）','ファイテン株式会社',
+          '株式会社ダスキン','シャープ株式会社','シャークニンジャ株式会社（掃除機シャーク）',
+          '南海電気電鉄株式会社','株式会社ヨドバシカメラ(京都)','株式会社ダリヤ（ヘアカラーPalty）',
+          'りんくうプレミアム・アウトレット','株式会社ビナ紫粧','株式会社タレックス',
+          'プレミアアンチエイジング株式会社（ザクレンジングバームDUO）','大江戸温泉物語ホテルズ&リゾーツ',
+          '株式会社グラスファクトリー','やよいLiving','株式会社ハウジングサポート',
+          '岩手トヨペット株式会社','ナカボーサンエス株式会社（FAVEUR）',
+          'ビジネスレザーファクトリー株式会社','The Day Spa HOME'
+        ]
+      },
+      {
+        title: '全国各地結婚式場広告モデル',
+        items: [
+          '桂由美ウェディングドレス・和装','株式会社デコルテ・ホールディングス（STUDIO TVB）',
+          '株式会社ベストアニバーサリー（WAKON STYLE）','株式会社スタジオゼロ'
+        ]
+      },
+      {
+        title: 'SHOW',
+        items: [
+          '上田 美江子様（ショーセミナー）','株式会社資生堂（LAURA MERCIERメイクショー）','月下美人（ヘアメイクショー）'
+        ]
+      }
+    ]
+  },
+  {
+    id: 'nakamura', name: '中村恵利華', age: 26,
+    height: 163.5, size: 'B 79cm / W 60cm / H 86cm',
+    shoe: '24.0cm', clothesSize: '7号', hairColor: 'ロング・ダークブラウン',
+    exp: '確認中', location: '確認中',
+    achievementTitle: 'ブライダルの実績',
+    achievements: [
+      'NOUVELLE','CLAIRE BRIDAL STUDIO','FLARE 横浜元町本店',
+      'アンジェリカ・ノートルダム（大阪）','アールベルアンジェ奈良（奈良）',
+      'ララ・マリー（山口）','STUDIO ARC（神奈川）','ホテルサンライフガーデン（神奈川）',
+      'ANA クラウンプラザホテル富山','エルシオンKISARAZU（千葉）',
+      'ザ・チェルシーコートおゆみ野ガーデン（千葉）','ザ テンダーハウスウエディング','ワタベウェディング'
     ]
   },
 ];
@@ -159,12 +217,16 @@ function buildCard(m, i, gender) {
     <div class="card-body">
       <div class="card-name">
         <span class="nm">${m.name}</span>
-        <span class="age">${m.age}歳</span>
+        <span class="age">${m.age}${m.age === '確認中' ? '' : '歳'}</span>
       </div>
       <div class="card-loc">${m.location}</div>
       <div class="card-stat">
         <span><span class="l">身長</span>${m.height}cm</span>
-        ${m.exp != null ? `<span><span class="l">芸歴</span>${m.exp}年</span>` : `<span><span class="l">芸歴</span>なし</span>`}
+        ${m.exp === '確認中'
+          ? `<span><span class="l">芸歴</span>確認中</span>`
+          : m.exp != null
+            ? `<span><span class="l">芸歴</span>${m.exp}年</span>`
+            : `<span><span class="l">芸歴</span>なし</span>`}
       </div>
     </div>
   `;
@@ -245,6 +307,7 @@ function renderLightbox() {
   $('#lbLoc').textContent = m.location;
   $('#lbHeight').textContent = m.height;
   $('#lbAge').textContent = m.age;
+  $('#lbAgeUnit').textContent = m.age === '確認中' ? '' : '歳';
   $('#lbSize').textContent = m.size;
   $('#lbLocSpec').textContent = m.location;
 
@@ -256,7 +319,7 @@ function renderLightbox() {
   // exp
   const specExp = $('#specExp');
   specExp.style.display = '';
-  $('#lbExp').textContent = m.exp != null ? m.exp + '年' : 'なし';
+  $('#lbExp').textContent = m.exp === '確認中' ? '確認中' : (m.exp != null ? m.exp + '年' : 'なし');
 
   // hair / eye / clothes (male)
   const specHair = $('#specHair');
@@ -271,13 +334,18 @@ function renderLightbox() {
   const schedSection = $('#lbSchedule');
   if (avail.length) {
     schedSection.style.display = '';
-    $('#lbScheduleCards').innerHTML = avail.map(d => `
-      <div class="avail-card ${d.ok ? 'avail-ok' : 'avail-ng'}">
-        <span class="avail-date">${d.date}</span>
-        <span class="avail-badge">${d.ok ? '○' : '✖'}</span>
-        <span class="avail-label">${d.ok ? '出演可' : '出演不可'}</span>
-      </div>
-    `).join('');
+    $('#lbScheduleCards').innerHTML = avail.map(d => {
+      const cls   = d.status === 'ok' ? 'avail-ok' : d.status === 'ng' ? 'avail-ng' : 'avail-pending';
+      const badge = d.status === 'ok' ? '○' : d.status === 'ng' ? '✕' : '－';
+      const label = d.status === 'ok' ? '出演可' : d.status === 'ng' ? '出演不可' : '未定';
+      return `
+        <div class="avail-card ${cls}">
+          <span class="avail-date">${d.date}</span>
+          <span class="avail-badge">${badge}</span>
+          <span class="avail-label">${label}</span>
+        </div>
+      `;
+    }).join('');
   } else {
     schedSection.style.display = 'none';
   }
