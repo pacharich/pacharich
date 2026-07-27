@@ -102,7 +102,7 @@ const FEMALES = [
     id: 'nakamura', name: '中村恵利華', age: 26,
     height: 163.5, size: 'B 79cm / W 60cm / H 86cm',
     shoe: '24.0cm', clothesSize: '7号', hairColor: 'ロング・ダークブラウン',
-    exp: '非公開', location: '非公開',
+    exp: 5, location: '東京都',
     achievementTitle: 'ブライダルの実績',
     achievements: [
       'NOUVELLE','CLAIRE BRIDAL STUDIO','FLARE 横浜元町本店',
