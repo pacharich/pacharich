@@ -65,9 +65,9 @@ const FEMALES = [
     ]
   },
   {
-    id: 'kaneko', name: '金子エリカ', age: '確認中',
-    height: 169, size: '確認中',
-    shoe: '確認中', exp: 10, location: '確認中',
+    id: 'kaneko', name: '金子エリカ', age: 34,
+    height: 169, size: '非公開',
+    shoe: '非公開', exp: 10, location: '非公開',
     achievementTitle: '実績',
     achievementSections: [
       {
@@ -102,7 +102,7 @@ const FEMALES = [
     id: 'nakamura', name: '中村恵利華', age: 26,
     height: 163.5, size: 'B 79cm / W 60cm / H 86cm',
     shoe: '24.0cm', clothesSize: '7号', hairColor: 'ロング・ダークブラウン',
-    exp: '確認中', location: '確認中',
+    exp: '非公開', location: '非公開',
     achievementTitle: 'ブライダルの実績',
     achievements: [
       'NOUVELLE','CLAIRE BRIDAL STUDIO','FLARE 横浜元町本店',
@@ -217,13 +217,13 @@ function buildCard(m, i, gender) {
     <div class="card-body">
       <div class="card-name">
         <span class="nm">${m.name}</span>
-        <span class="age">${m.age}${m.age === '確認中' ? '' : '歳'}</span>
+        <span class="age">${m.age}${typeof m.age === 'number' ? '歳' : ''}</span>
       </div>
       <div class="card-loc">${m.location}</div>
       <div class="card-stat">
         <span><span class="l">身長</span>${m.height}cm</span>
-        ${m.exp === '確認中'
-          ? `<span><span class="l">芸歴</span>確認中</span>`
+        ${typeof m.exp === 'string'
+          ? `<span><span class="l">芸歴</span>${m.exp}</span>`
           : m.exp != null
             ? `<span><span class="l">芸歴</span>${m.exp}年</span>`
             : `<span><span class="l">芸歴</span>なし</span>`}
@@ -307,7 +307,7 @@ function renderLightbox() {
   $('#lbLoc').textContent = m.location;
   $('#lbHeight').textContent = m.height;
   $('#lbAge').textContent = m.age;
-  $('#lbAgeUnit').textContent = m.age === '確認中' ? '' : '歳';
+  $('#lbAgeUnit').textContent = typeof m.age === 'number' ? '歳' : '';
   $('#lbSize').textContent = m.size;
   $('#lbLocSpec').textContent = m.location;
 
@@ -319,7 +319,7 @@ function renderLightbox() {
   // exp
   const specExp = $('#specExp');
   specExp.style.display = '';
-  $('#lbExp').textContent = m.exp === '確認中' ? '確認中' : (m.exp != null ? m.exp + '年' : 'なし');
+  $('#lbExp').textContent = typeof m.exp === 'string' ? m.exp : (m.exp != null ? m.exp + '年' : 'なし');
 
   // hair / eye / clothes (male)
   const specHair = $('#specHair');
